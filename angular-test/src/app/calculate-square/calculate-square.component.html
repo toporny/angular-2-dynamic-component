@@ -13,5 +13,14 @@
 </div>
 
 
-<h3>Pole powierzchni: {{ area  }}</h3>
-<h3>Obwód: {{ circumference  }}</h3>
+<div [ngSwitch]="whatToCalculate">
+  <div *ngSwitchCase="0">
+  	<div class="square-shape-fill"></div>
+  	<h3>Pole powierzchni: {{ area  }}</h3>
+  </div>
+  <div *ngSwitchCase="1">
+  	<div class="square-shape-empty"></div>
+  	<h3>Obwód: {{ circumference  }}</h3>
+  </div>
+</div>  
+

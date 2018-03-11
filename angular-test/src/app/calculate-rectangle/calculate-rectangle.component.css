@@ -1,1 +1,16 @@
-canvas { border: 1px solid blue; }
+.rectangle-shape-fill {
+	width: 200px;
+	height: 100px;
+	background-color: red;
+	border: 1px solid #AA0000;
+}
+
+.rectangle-shape-empty{
+	width: 200px;
+	height: 100px;
+	border: 1px solid #AA0000;
+}
+
+
+
+
