@@ -3,3 +3,16 @@
 
   what to calculate: {{whatToCalculate}}
 </p>
+
+
+
+<div>
+	<label>Podaj promień:
+		<input #radius (keyup)="onEnterA(radius.value)">
+	</label>
+</div>
+
+
+
+<h3>Pole powierzchni: {{ area  }}</h3>
+<h3>Obwód: {{ circumference  }}</h3>

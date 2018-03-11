@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { NgModule } from '@angular/core';
 
 
@@ -11,7 +12,7 @@ import { CalculateCircleComponent } from './calculate-circle/calculate-circle.co
 
 @NgModule({
   declarations: [ AppComponent, CalculateSquareComponent, CalculateRectangleComponent, CalculateCircleComponent ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, FormsModule],
   entryComponents: [AppComponent, CalculateSquareComponent, CalculateRectangleComponent, CalculateCircleComponent ], //, CalculateWheelComponent, CalculateShapeComponent
   providers: [],
   bootstrap: [AppComponent]

@@ -3,3 +3,15 @@
 
   what to calculate: {{whatToCalculate}}
 </p>
+
+
+
+<div>
+	<label>Podaj długość boku:
+		<input #side (keyup)="onEnterSide(side.value)">
+	</label>
+</div>
+
+
+<h3>Pole powierzchni: {{ area  }}</h3>
+<h3>Obwód: {{ circumference  }}</h3>
