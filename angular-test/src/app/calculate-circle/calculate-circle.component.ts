@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Calculations } from "./../icalculations.type";
-
+import { Calculations, WhatToCalculate } from "./../icalculations.type";
 
 @Component({
   selector: 'app-calculate-circle',
@@ -12,6 +11,8 @@ export class CalculateCircleComponent implements OnInit, Calculations {
 
   constructor() { }
 
+  whatToCalculate:WhatToCalculate;
+
   getArea() {
 
   }
@@ -21,7 +22,5 @@ export class CalculateCircleComponent implements OnInit, Calculations {
 
   ngOnInit() {
   }
-
- 
 
 }
