@@ -6,24 +6,18 @@
   </h1>
 </div>
 
-<table>
-<thead>
-  <td>Select method:</td>
-  <td></td>
-</thead>
-<tbody>
-	<tr *ngFor="let entry of entries; let idx = index">
-	<td>{{ entry.description }}</td>
-	<td><input type="radio" name="radiogroup" (change)="onSelectionChange(entry)" [checked]="(idx === 0)" [value]="entry.id"></td>
-	</tr>
-</tbody>
-</table>
+ 
+  <h3>Co obliczać?:</h3>
+  <div *ngFor="let entry of entries; let idx = index">
+    <input type="radio" name="radiogroup" (change)="onSelectionChange(entry)" [checked]="(idx === 0)" [value]="entry.id">{{ entry.description }} 
+  </div>
 
-<select #selectElem (change)="changeShape(selectElem.value)">
-    <option *ngFor="let shape of lShapes" [value]="shape.id">
-        {{shape.Name}}
-    </option>
-</select>
+  <h3>Wybierz kształt:</h3>
+  <select #selectElem (change)="changeShape(selectElem.value)">
+      <option *ngFor="let shape of lShapes" [value]="shape.id">
+          {{shape.Name}}
+      </option>
+  </select>
 
 
 </div>

@@ -48,7 +48,7 @@ export class AppComponent {
 		this.entries = [
 			{ id: 1, description: 'pole', action: WhatToCalculate.Area}, // pole
 			{ id: 2, description: 'obwód', action: WhatToCalculate.Circumference },  //obwód
-			//{ id: 3, description: 'inna figura..', action: 'inna akcja' },
+			//{ id: 3, description: 'inna cecha..', action: 'inna akcja' },
 		];
 		
 		if(this.entries) {
@@ -70,21 +70,16 @@ export class AppComponent {
 		{ id: 1, Name: 'koło' , calcComponent: CalculateCircleComponent},
 		{ id: 2, Name: 'kwadrat' ,calcComponent: CalculateSquareComponent },
 		{ id: 3, Name: 'prostokąt', calcComponent: CalculateRectangleComponent},
-		//{ id: 4, Name: 'triangle', calcComponent: CalculateTriangleComponent},
+		//{ id: 4, Name: 'trójkąt', calcComponent: CalculateTriangleComponent},
 	];
 
 	curUser: any = this.lShapes[0]; // first will be selected by default by browser
 
-	constructor (private componentFactoryResolver: ComponentFactoryResolver, private viewContainerRef: ViewContainerRef)
-	{
-		//const childComponent = this.componentFactoryResolver.resolveComponentFactory(CalculateWheelComponent); 
-	}
-
+	constructor (private componentFactoryResolver: ComponentFactoryResolver, private viewContainerRef: ViewContainerRef) {}
 
 	changeShape(x) {
 		this.currentShape = x;
 		this.viewContainerRef.clear();
-		//console.log(this.selectedEntry);
 		let factory;
 		let componentRef;
 		if (x > 0) {
@@ -98,6 +93,9 @@ export class AppComponent {
 				case "3": //prostokąt
 					factory = this.componentFactoryResolver.resolveComponentFactory(CalculateRectangleComponent);
 					break;
+				// case "4": //trójkąt
+				// 	factory = this.componentFactoryResolver.resolveComponentFactory(CalculateRectangleComponent);
+				// 	break;
 			}
 			componentRef = this.viewContainerRef.createComponent(factory);
 			componentRef.instance.whatToCalculate  = this.whatToCalculate;
