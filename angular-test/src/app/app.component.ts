@@ -2,11 +2,13 @@ import { Component, ComponentRef, ViewChild, ViewContainerRef, ComponentFactoryR
 import { CalculateSquareComponent } from "./calculate-square/calculate-square.component";
 import { CalculateRectangleComponent } from "./calculate-rectangle/calculate-rectangle.component";
 import { CalculateCircleComponent } from "./calculate-circle/calculate-circle.component";
-import { Calculations, WhatToCalculate } from "./icalculations.type";
+import { Calculations, WhatToCalculate, MyLists } from "./icalculations.type";
 
 
 
 /*
+Zadanie:
+========
 Poniżej szczegóły:
 Zadanie: Stworzenie aplikacji obliczającej pole i obwód trzech figur:
 koło, kwadrat, prostokąt.
@@ -21,6 +23,28 @@ Widok 1:
 Widok 2 (po wyborze figury):
 Formularz z polami potrzebnymi do obliczeń (np. promień / długość boków),
 pole zawierające wynik obliczeń.
+*/
+
+/*
+Rozwiązanie:
+============
+Jeden główny "app.component", który ładuje stosowne komponenty
+w zależności od konieczności (calculate-circle, calculate-rectangle, calculate-square),
+Każdy komponent ma formularz specyficzny dla danej figury oraz robi obliczenia.
+Inne komponenty mogą być dodane potem.
+
+
+Jak aplikacja spełnia warunek o dalszym łatwym rozwoju?
+=======================================================
+1. Każda figura geoemtryczna ma swój osobny komponent który jest ładowany dynamicznie
+2. W komponencie są funcje obliczające cechy (obwód, pole, inne mogą być dodane)
+   oraz kod rysujący daną figurę na ekranie
+3. Każdy nowy komponent musi implementować klasę abstrakcyjną Calculations
+   (z pliku "icalculations.type.ts" który pełni rolę interfejsu)
+   w którym są zdefiniowane nazwy metod które każdy komponent musi obsłużyć
+   [na tym etapie są to: getArea(), getCircumference()])
+4. w pliku "icalculations.type.ts" są zdefiniowane także zawartości pól radiobutton i select
+
 */
 
 @Component({
@@ -43,14 +67,10 @@ export class AppComponent {
 	currentShape: "0";
 
 	entries = [];
+	myLists = new MyLists();
 
   	ngOnInit() {
-		this.entries = [
-			{ id: 1, description: 'pole', action: WhatToCalculate.Area}, // pole
-			{ id: 2, description: 'obwód', action: WhatToCalculate.Circumference },  //obwód
-			//{ id: 3, description: 'inna cecha..', action: 'inna akcja' },
-		];
-		
+		this.entries =	this.myLists.getRadioList();
 		if(this.entries) {
 			this.onSelectionChange(this.entries[0]);   // select the first one
 		}
@@ -65,16 +85,8 @@ export class AppComponent {
     }
 
 
-	lShapes: any[] = [
-		{ id: 0, Name: '-- select -- ', calcComponent: null },
-		{ id: 1, Name: 'koło' , calcComponent: CalculateCircleComponent},
-		{ id: 2, Name: 'kwadrat' ,calcComponent: CalculateSquareComponent },
-		{ id: 3, Name: 'prostokąt', calcComponent: CalculateRectangleComponent},
-		//{ id: 4, Name: 'trójkąt', calcComponent: CalculateTriangleComponent},
-	];
-
+	lShapes: any[] = this.myLists.getSelectList();
 	curUser: any = this.lShapes[0]; // first will be selected by default by browser
-
 	constructor (private componentFactoryResolver: ComponentFactoryResolver, private viewContainerRef: ViewContainerRef) {}
 
 	changeShape(x) {
@@ -82,21 +94,9 @@ export class AppComponent {
 		this.viewContainerRef.clear();
 		let factory;
 		let componentRef;
+
 		if (x > 0) {
-			switch (x) {
-				case "1": //koło
-					factory = this.componentFactoryResolver.resolveComponentFactory(CalculateCircleComponent);
-					break;
-				case "2": //kwadrat
-					factory = this.componentFactoryResolver.resolveComponentFactory(CalculateSquareComponent);
-					break;
-				case "3": //prostokąt
-					factory = this.componentFactoryResolver.resolveComponentFactory(CalculateRectangleComponent);
-					break;
-				// case "4": //trójkąt
-				// 	factory = this.componentFactoryResolver.resolveComponentFactory(CalculateRectangleComponent);
-				// 	break;
-			}
+			factory = this.myLists.getFactoryResolver(this.componentFactoryResolver, x);
 			componentRef = this.viewContainerRef.createComponent(factory);
 			componentRef.instance.whatToCalculate  = this.whatToCalculate;
 		}

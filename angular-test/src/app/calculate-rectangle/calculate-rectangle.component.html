@@ -1,13 +1,11 @@
 <div>
-	<label>Podaj pierwszy bok:
-		<input #a (keyup)="onEnterA(a.value)">
-	</label>
+  <div class="lab">Podaj długość pierwszego boku:</div>
+	<input #a (keyup)="onEnterA(a.value)">
 </div>
 
 <div>
-	<label>Podaj drugi bok:
-		<input #b (keyup)="onEnterB(b.value)">
-	</label>
+  <div class="lab">Podaj długość drugiego boku:</div>
+  <input #b (keyup)="onEnterB(b.value)">
 </div>
 
 
@@ -19,6 +17,6 @@
   </div>
   <div *ngSwitchCase="1">
   	<div class="rectangle-shape-empty"></div>
-  	<h3>Obwód: {{ circumference  }}</h3>
+  	<h3>Obwód: {{ circumference }}</h3>
   </div>
 </div>  

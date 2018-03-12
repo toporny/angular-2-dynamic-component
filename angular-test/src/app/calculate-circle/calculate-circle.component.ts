@@ -30,7 +30,7 @@ export class CalculateCircleComponent implements OnInit, Calculations {
 
 
   getArea() {
-    let result = 3.14159 * parseInt(this.radius) * parseInt(this.radius);
+    let result =  3.14159 * parseInt(this.radius) * parseInt(this.radius);
     if (!isNaN(result)) {
       return result.toString()
     }
@@ -38,7 +38,7 @@ export class CalculateCircleComponent implements OnInit, Calculations {
   }
 
   getCircumference() {
-    let result = 2* parseInt(this.radius) * parseInt(this.radius);
+    let result = 2 * 3.14159 * parseInt(this.radius);
     if (!isNaN(result)) {
       return result.toString()
     }

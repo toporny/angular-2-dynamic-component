@@ -6,7 +6,7 @@
 
 
 
-<h3>Co obliczać?:</h3>
+<h3>Co obliczać?</h3>
 <div *ngFor="let entry of entries; let idx = index">
   <input type="radio" name="radiogroup" (change)="onSelectionChange(entry)" [checked]="(idx === 0)" [value]="entry.id">{{ entry.description }} 
 </div>

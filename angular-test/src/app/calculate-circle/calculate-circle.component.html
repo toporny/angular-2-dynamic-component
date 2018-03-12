@@ -1,8 +1,9 @@
 <div>
-	<label>Podaj promień:
-		<input #radius (keyup)="onEnterA(radius.value)">
-	</label>
+  <div class="lab">Podaj długość promienia okręgu:</div>
+  <input #radius (keyup)="onEnterA(radius.value)">
 </div>
+
+
 
 
 <div [ngSwitch]="whatToCalculate">
@@ -13,7 +14,7 @@
   </div>
   <div *ngSwitchCase="1">
     <div class="circle-shape-empty"></div>
-    <h3>Obwód: {{ circumference  }}</h3>
+    <h3>Obwód: {{ circumference }}</h3>
     
   </div>
 </div>  
