@@ -1,26 +1,23 @@
-### Zadanie:
-Stworzenie aplikacji obliczającej pole i obwód trzech figur:
-koło, kwadrat, prostokąt.
-Powinna być przygotowana w sposób umożlwiający dalszy rozwój,
-poprzez dodanie kolejnych typów obliczeń oraz figur.
-Technologia: Preferowany Angular 2+
+### Task:
+Make angular 4 application which calculates surface area of three objects:
+wheel, square and rectangle. Application has to be easy scalable. We want to add more modules/object/calculations in easy way in future. 
 
-Widok 1:
-- Radio button z wyborem obliczeń (pole / obwód),
-- Lista combo z wyborem figury.
+Technology:Angular 2+
 
-Widok 2 (po wyborze figury):
-- Formularz z polami potrzebnymi do obliczeń (np. promień / długość boków), pole zawierające wynik obliczeń.
+View 1:
+- Radio button witch calculate choice (area / perimeter),
+- combo list with objects choice.
 
-### Rozwiązanie:
-Jeden główny "app.component", który ładuje stosowne komponenty
-w zależności od konieczności (calculate-circle, calculate-rectangle, calculate-square),
-Każdy komponent ma formularz specyficzny dla danej figury oraz robi inne obliczenia.
-Inne komponenty mogą być dodane potem.
+View 2 (next step):
+- Form with all inputs (square: 1 input, rectange: 2 inputs and so on..) and result area.
 
+### Solution:
+One main "app.component" which only one job is to load necessary components depends of choice (calculate-circle, calculate-rectangle, calculate-square).
+Every component contains form and calculation formulas, specific for selected shape. 
+More component can be added easily later on.
 
-### Jak aplikacja spełnia warunek o dalszym łatwym rozwoju?
-1. Każda figura geometryczna ma swój osobny komponent, który jest ładowany dynamicznie
-2. W komponencie są funkcje obliczające cechy (obwód, pole, inne mogą być dodane) oraz kod rysujący daną figurę na ekranie
-3. Każdy nowy komponent musi implementować klasę abstrakcyjną Calculations (z pliku "icalculations.type.ts" który pełni rolę interfejsu) w którym są zdefiniowane nazwy metod które każdy komponent musi obsłużyć - na tym etapie są to: getArea(), getCircumference()
-4. W pliku "icalculations.type.ts" są zdefiniowane także zawartości pól radiobutton i select
+### How aplication meets "easy scalable" requirement:
+1. Each geometric shape has own separated component which is loaded dynamically.
+2. Inside component are stored all calculation formulas and drawing functions specific for particular shape. 
+3. Each component has to implement apstract class "Calculations" (from  "icalculations.type.ts" file which is de facto interface of all required methods: getArea(), getCircumference() )
+4. In "icalculations.type.ts" file radiobutton and select content are defined.
