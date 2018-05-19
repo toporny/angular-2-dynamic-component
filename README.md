@@ -2,7 +2,7 @@
 Make angular 4 application which calculates surface area of three objects:
 wheel, square and rectangle. Application has to be easy scalable. We want to add more modules/object/calculations in easy way in future. 
 
-Technology:Angular 2+
+Technology: Angular 2+
 
 View 1:
 - Radio button witch calculate choice (area / perimeter),
