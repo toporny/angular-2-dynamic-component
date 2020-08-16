@@ -21,3 +21,7 @@ More component can be added easily later on.
 2. Inside component are stored all calculation formulas and drawing functions specific for particular shape. 
 3. Each component has to implement apstract class "Calculations" (from  "icalculations.type.ts" file which is de facto interface of all required methods: getArea(), getCircumference() )
 4. In "icalculations.type.ts" file radiobutton and select content are defined.
+
+## Working online version
+[http://example4.techduinn.com/](http://example4.techduinn.com/)
+
